@@ -1,0 +1,167 @@
+{% load static %}
+<nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="{% url 'home' %}" class="flex items-center">
+                    <!-- Optional: Add your logo here -->
+                    <!-- <img src="{% static 'images/logo.png' %}" alt="KEIO Logo" class="h-10 mr-3"> -->
+                    <div class="text-2xl font-bold text-gray-800 dark:text-white">
+                        <span class="text-red-600">KEIO</span> 
+                        <span class="text-blue-600">Educational Consultancy</span>
+                    </div>
+                    <div class="ml-2 text-xs font-light text-gray-500 dark:text-gray-300 hidden md:block">
+                        | Gateway to Japanese Academia
+                    </div>
+                </a>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <a href="#services" class="nav-link">Our Services</a>
+                <a href="#universities" class="nav-link">Partner Universities</a>
+                <a href="#testimonials" class="nav-link">Success Stories</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+                
+               <div class="flex items-center space-x-2 ml-4 border-l border-gray-200 dark:border-gray-600 pl-4">
+                    <a onclick="togglePopup()" class="ml-2 px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer">
+                        Free Consultation
+                    </a>
+                </div>
+
+                    <!-- Popup Modal -->
+<div id="consultationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative">
+        <button onclick="togglePopup()" class="absolute top-2 right-3 text-xl text-gray-500 hover:text-red-500">&times;</button>
+        <h3 class="text-xl font-semibold mb-4 text-center">Request Free Consultation</h3>
+        <form id="consultationForm" method="POST">
+            {% csrf_token %}
+             <div class="mb-4">
+    <label>Full Name</label>
+    <input type="text" name="name" required class="w-full px-3 py-2 border rounded-md">
+  </div>
+
+  <div class="mb-4">
+    <label>Email</label>
+    <input type="email" name="email" required class="w-full px-3 py-2 border rounded-md">
+  </div>
+
+  <div class="mb-4">
+    <label>Phone Number</label>
+    <input type="text" name="phone" required class="w-full px-3 py-2 border rounded-md">
+  </div>
+
+  <div class="mb-4">
+    <label>City / Location</label>
+    <input type="text" name="location" required class="w-full px-3 py-2 border rounded-md">
+  </div>
+
+  <!-- Hidden country input -->
+  <input type="hidden" name="country" value="Japan" />
+
+
+  <div class="mb-4">
+    <label>Education Level</label>
+    <select name="education" required class="w-full px-3 py-2 border rounded-md">
+      <option value="High School">High School</option>
+      <option value="Bachelor">Bachelor's</option>
+      <option value="Master">Master's</option>
+    </select>
+  </div>
+
+  <div class="mb-4">
+    <label>Expected Intake</label>
+    <input type="month" name="intake" required class="w-full px-3 py-2 border rounded-md">
+  </div>
+
+  <div class="mb-4">
+    <label>Additional Message</label>
+    <textarea name="message" rows="3" class="w-full px-3 py-2 border rounded-md"></textarea>
+  </div>
+
+  <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Send Request</button>
+</form>
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+  function togglePopup() {
+    const popup = document.getElementById('consultationPopup');
+    popup.classList.toggle('hidden');
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("consultationForm");
+    const submitBtn = form.querySelector("button[type='submit']");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Disable the button and show loading text
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending...";
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      fetch("/api/consultation/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send message.");
+          }
+          return response.json();
+        })
+        .then(() => {
+          // Reset form & enable button
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Send Request";
+
+          // Show success toast
+          showSuccessToast("✅ Message sent successfully! We'll contact you soon.");
+          togglePopup(); // Close the modal
+        })
+        .catch((error) => {
+          console.error(error);
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Send Request";
+          showErrorToast("❌ Something went wrong. Please try again.");
+        });
+    });
+
+    function showSuccessToast(message) {
+      showToast(message, "bg-green-600");
+    }
+
+    function showErrorToast(message) {
+      showToast(message, "bg-red-600");
+    }
+
+    function showToast(message, bgColor) {
+      const toast = document.createElement("div");
+      toast.className = `fixed top-5 right-5 ${bgColor} text-white px-4 py-2 rounded shadow-lg z-50 transition-opacity duration-300 ease-in-out`;
+      toast.innerText = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = "0";
+      }, 3000);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+  });
+</script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

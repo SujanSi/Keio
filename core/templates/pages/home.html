@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/70 to-orange-500/30"></div>
+        <img src="{% static 'images/japan-hero.jpg' %}" alt="Japan Education" class="w-full h-full object-cover object-center">
+    </div>
+    
+    <!-- Content -->
+    <div class="container mx-auto px-4 sm:px-6 z-10 text-center" data-aos="fade-up">
+        <div class="mb-4 sm:mb-6">
+<span style="background-color: #f97316; color: white; padding: 12px 24px; border-radius: 9999px; font-size: 1.125rem; font-weight: bold; letter-spacing: 0.05em; display: inline-block; text-transform: uppercase; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;" 
+                  onmouseover="this.style.backgroundColor='#ea580c'" 
+                  onmouseout="this.style.backgroundColor='#f97316'">
+                KEIO EDUCATION CONSULTANCY
+            </span>
+        </div>
+        <div class="text-center mb-8 sm:mb-12 px-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+                <span style="color: #fb923c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3)">Study at Japan's</span> 
+                <span class="text-blue-600">Top Universities</span>
+            </h1>
+            <p style="font-size: 1.25rem; line-height: 1.75rem; margin-bottom: 1.5rem; max-width: 42rem; margin-left: auto; margin-right: auto; background: linear-gradient(to right, #f97316, #3b82f6); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500;">
+                Comprehensive support for admissions to Tokyo, Keio, Waseda and 15+ prestigious Japanese institutions
+            </p>
+            <div class="flex justify-center gap-3 sm:gap-4">
+                <a href="javascript:void(0)" onclick="togglePopup()"
+                    style="padding: 0.75rem 1.5rem; background: linear-gradient(to right, #f97316, #ea580c); color: white; font-weight: bold; text-decoration: none; border-radius: 9999px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.3s ease; display: inline-block;"
+                   onmouseover="this.style.background='linear-gradient(to right, #ea580c, #c2410c)'"
+                   onmouseout="this.style.background='linear-gradient(to right, #f97316, #ea580c)'">
+                    Free Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex justify-center items-center">
+        <a href="#services" class="text-white hover:text-orange-400 transition">
+            <i class="fas fa-chevron-down text-2xl sm:text-3xl leading-none"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-12 sm:py-16 md:py-20 bg-gray-100 dark:bg-gray-800">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
+            <div class="p-4 sm:p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">98%</div>
+                <div class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Acceptance Rate to Top Japanese Universities</div>
+            </div>
+            <div class="p-4 sm:p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">15+</div>
+                <div class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Partner Institutions in Japan</div>
+            </div>
+            <div class="p-4 sm:p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">100%</div>
+                <div class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Visa Success Rate</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview -->
+<section id="services" class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-12 text-gray-900 dark:text-white" data-aos="fade-up">
+      Our Japan Education Services
+    </h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- University Admissions -->
+      <div class="flex flex-col sm:flex-row items-center p-6 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2"
+        data-aos="fade-up" data-aos-delay="100">
+        <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-orange-600 to-yellow-500 text-blue-600 flex items-center justify-center text-2xl sm:text-3xl shadow-lg ring-2 ring-orange-500 animate-bounce-slow mb-4 sm:mb-0">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="sm:ml-6 text-center sm:text-left">
+          <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-600 dark:text-blue-400">University Admissions</h3>
+          <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+            Comprehensive support for applications to Todai, Keio, Waseda and other prestigious Japanese universities.
+          </p>
+        </div>
+      </div>
+
+      <!-- Language Preparation -->
+      <div class="flex flex-col sm:flex-row items-center p-6 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2"
+        data-aos="fade-up" data-aos-delay="200">
+        <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-orange-600 to-yellow-500 text-blue-600 flex items-center justify-center text-2xl sm:text-3xl shadow-lg ring-2 ring-orange-500 animate-bounce-slow mb-4 sm:mb-0">
+          <i class="fas fa-language"></i>
+        </div>
+        <div class="sm:ml-6 text-center sm:text-left">
+          <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-600 dark:text-blue-400">Language Preparation</h3>
+          <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+            JLPT-focused courses and intensive language programs to achieve N2/N1 proficiency.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cultural Integration -->
+      <div class="flex flex-col sm:flex-row items-center p-6 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2"
+        data-aos="fade-up" data-aos-delay="300">
+        <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-orange-600 to-yellow-500 text-blue-600 flex items-center justify-center text-2xl sm:text-3xl shadow-lg ring-2 ring-orange-500 animate-bounce-slow mb-4 sm:mb-0">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="sm:ml-6 text-center sm:text-left">
+          <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-600 dark:text-blue-400">Cultural Integration</h3>
+          <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+            Pre-departure orientation and ongoing support for life in Japan, including housing and visas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-12 sm:py-16 bg-gray-100 dark:bg-gray-800" id="testimonials">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-12 text-gray-900 dark:text-white" data-aos="fade-up">
+            Student Success Stories
+        </h2>
+
+        <!-- Horizontal scrollable wrapper -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-4 sm:space-x-6 py-4 px-4 scrollbar-thin scrollbar-thumb-orange-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-900 smooth-scroll">
+            <!-- Student 1 -->
+            <div class="flex-none w-10/12 sm:w-80 snap-center bg-gray-50 dark:bg-gray-700 p-4 sm:p-6 rounded-3xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex items-center mb-3 sm:mb-4">
+                    <img src="{% static 'images/student1.jpg' %}" alt="Student" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover ring-2 sm:ring-4 ring-orange-500">
+                    <div class="ml-3 sm:ml-4">
+                        <h4 class="font-semibold text-blue-600 dark:text-blue-400 text-base sm:text-lg">Sarah Johnson</h4>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-semibold">University of Tokyo, Economics</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                    "KEIO Consultancy made my dream of studying in Japan a reality. The team walked me through every step, from choosing the right university to securing my student visa."
+                </p>
+            </div>
+
+            <!-- Student 2 -->
+            <div class="flex-none w-10/12 sm:w-80 snap-center bg-gray-50 dark:bg-gray-700 p-4 sm:p-6 rounded-3xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex items-center mb-3 sm:mb-4">
+                    <img src="{% static 'images/student2.jpg' %}" alt="Student" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover ring-2 sm:ring-4 ring-orange-500">
+                    <div class="ml-3 sm:ml-4">
+                        <h4 class="font-semibold text-blue-600 dark:text-blue-400 text-base sm:text-lg">Michael Chen</h4>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-semibold">Kyoto University, Engineering</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                    "From zero Japanese to N2 in 18 months — their intensive language program made sure I was ready for technical studies in Kyoto."
+                </p>
+            </div>
+
+            <!-- Student 3 -->
+            <div class="flex-none w-10/12 sm:w-80 snap-center bg-gray-50 dark:bg-gray-700 p-4 sm:p-6 rounded-3xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex items-center mb-3 sm:mb-4">
+                    <img src="{% static 'images/student3.jpg' %}" alt="Student" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover ring-2 sm:ring-4 ring-orange-500">
+                    <div class="ml-3 sm:ml-4">
+                        <h4 class="font-semibold text-blue-600 dark:text-blue-400 text-base sm:text-lg">Aisha Rahman</h4>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-semibold">Osaka University, Medicine</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                    "The cultural orientation and ongoing support made all the difference in settling into a new country. I am truly grateful for their help!"
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Japan University Partners -->
+<section id="universities" class="py-12 sm:py-16 md:py-20">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-12 text-gray-900 dark:text-white" data-aos="fade-up">
+            Our Prestigious Partners
+        </h2>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="bg-orange-100 dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2 text-center"
+                data-aos="fade-up">
+                <img src="{% static 'images/todai-logo.jpg' %}" 
+                     alt="University of Tokyo" 
+                     class="w-20 h-20 sm:w-28 sm:h-28 p-2 sm:p-4 mb-3 sm:mb-4 mx-auto rounded-full shadow-md">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-blue-900 dark:text-blue-400">
+                    University of Tokyo
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                    Japan's leading institution for education and research across all disciplines.
+                </p>
+            </div>
+
+            <div class="bg-orange-100 dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2 text-center"
+                data-aos="fade-up" data-aos-delay="100">
+                <img src="{% static 'images/keio-logo.jpg' %}" 
+                     alt="Keio University" 
+                     class="w-20 h-20 sm:w-28 sm:h-28 p-2 sm:p-4 mb-3 sm:mb-4 mx-auto rounded-full shadow-md">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-blue-900 dark:text-blue-400">
+                    Keio University
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                    Famous for its international programs and strong alumni network.
+                </p>
+            </div>
+
+            <div class="bg-orange-100 dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2 text-center"
+                data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'images/waseda-logo.jpg' %}" 
+                     alt="Waseda University" 
+                     class="w-20 h-20 sm:w-28 sm:h-28 p-2 sm:p-4 mb-3 sm:mb-4 mx-auto rounded-full shadow-md">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-blue-900 dark:text-blue-400">
+                    Waseda University
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                    Renowned for its humanities, social sciences, and political studies.
+                </p>
+            </div>
+
+            <div class="bg-orange-100 dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-2xl transform transition-transform duration-300 hover:-translate-y-2 text-center"
+                data-aos="fade-up" data-aos-delay="300">
+                <img src="{% static 'images/kyodai-logo.jpg' %}" 
+                     alt="Kyoto University" 
+                     class="w-20 h-20 sm:w-28 sm:h-28 p-2 sm:p-4 mb-3 sm:mb-4 mx-auto rounded-full shadow-md">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-blue-900 dark:text-blue-400">
+                    Kyoto University
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                    Top research-intensive institution with a rich legacy of excellence.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+  /* Slow bounce animation for the icon */
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 3s infinite ease-in-out;
+  }
+  
+  .smooth-scroll {
+      scroll-behavior: smooth;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+      height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+      background: #edf2f7;
+  }
+  .dark .scrollbar-thin::-webkit-scrollbar-track {
+      background: #1a202c;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: #f97316;
+      border-radius: 4px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+      .hero-content {
+          padding-top: 6rem;
+      }
+  }
+</style>
+{% endblock %}
