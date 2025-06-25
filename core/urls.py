@@ -5,3 +5,4 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('api/consultation/', views.send_consultation, name='submit_consultation'),
 ]
+

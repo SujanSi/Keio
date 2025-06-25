@@ -1,167 +1,209 @@
 {% load static %}
-<nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-all duration-300">
-    <div class="container mx-auto px-6 py-3">
-        <div class="flex items-center justify-between">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEIO Educational Consultancy</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="bg-white shadow-md fixed w-full z-50 top-0 left-0">
+    <!-- Top info bar -->
+    <div class="bg-gray-100 border-b border-gray-200 h-10">
+        <div class="container mx-auto px-4 h-full flex justify-between items-center">
+                <!-- Social icons -->
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                        <i class="fab fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                        <i class="fab fa-instagram text-sm"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                </div>
+                
+                <!-- Location -->
+                <div class="flex items-center text-xs md:text-sm text-blue-600">
+                    <i class="fas fa-map-marker-alt mr-1 text-blue-600"></i>
+                    <span>Kumaripati, Lagankhel | Phone: +977 9705005015  | Open Time: 10:00 AM to 5:00 PM </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main navigation -->
+        <div class="container mx-auto px-4 h-14 md:h-16 flex items-center justify-between bg-white">
+            <!-- Logo/Brand -->
             <div class="flex items-center">
                 <a href="{% url 'home' %}" class="flex items-center">
-                    <!-- Optional: Add your logo here -->
-                    <!-- <img src="{% static 'images/logo.png' %}" alt="KEIO Logo" class="h-10 mr-3"> -->
-                    <div class="text-2xl font-bold text-gray-800 dark:text-white">
-                        <span class="text-red-600">KEIO</span> 
-                        <span class="text-blue-600">Educational Consultancy</span>
-                    </div>
-                    <div class="ml-2 text-xs font-light text-gray-500 dark:text-gray-300 hidden md:block">
-                        | Gateway to Japanese Academia
+                    <img src="{% static 'images/logo.jpeg' %}" alt="KEIO Logo" class="h-8 md:h-10 mr-2 md:mr-3">
+                    <div class="text-xl md:text-2xl font-bold whitespace-nowrap">
+                        <span style="color: #D04A02;">KEIO</span> 
+                        <span class="text-blue-800 hidden sm:inline">Educational Consultancy</span>
+                        <span class="ml-1 text-xs font-light text-gray-500 hidden md:inline">| Gateway to Japanese Academia</span>
                     </div>
                 </a>
             </div>
-            
-            <div class="flex items-center space-x-6">
-                <a href="#services" class="nav-link">Our Services</a>
-                <a href="#universities" class="nav-link">Partner Universities</a>
-                <a href="#testimonials" class="nav-link">Success Stories</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                <a href="#services" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 transition">Services</a>
+                <a href="#universities" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 hidden sm:inline transition">Universities</a>
+                <a href="#testimonials" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 hidden md:inline transition">Success Stories</a>
+                <a href="#contact" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 transition">Contact</a>
                 
-               <div class="flex items-center space-x-2 ml-4 border-l border-gray-200 dark:border-gray-600 pl-4">
-                    <a onclick="togglePopup()" class="ml-2 px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer">
+                <!-- Consultation Button -->
+                <div class="flex items-center ml-2 md:ml-4 border-l border-gray-200 pl-2 md:pl-4">
+                    <a onclick="togglePopup()" 
+                       style="background-color: #D04A02;" 
+                       class="text-white px-3 py-1 md:px-4 md:py-2 rounded-md text-sm font-medium hover:bg-[#B03D00] transition cursor-pointer whitespace-nowrap">
                         Free Consultation
                     </a>
                 </div>
 
-                    <!-- Popup Modal -->
-<div id="consultationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative">
-        <button onclick="togglePopup()" class="absolute top-2 right-3 text-xl text-gray-500 hover:text-red-500">&times;</button>
-        <h3 class="text-xl font-semibold mb-4 text-center">Request Free Consultation</h3>
-        <form id="consultationForm" method="POST">
-            {% csrf_token %}
-             <div class="mb-4">
-    <label>Full Name</label>
-    <input type="text" name="name" required class="w-full px-3 py-2 border rounded-md">
-  </div>
 
-  <div class="mb-4">
-    <label>Email</label>
-    <input type="email" name="email" required class="w-full px-3 py-2 border rounded-md">
-  </div>
-
-  <div class="mb-4">
-    <label>Phone Number</label>
-    <input type="text" name="phone" required class="w-full px-3 py-2 border rounded-md">
-  </div>
-
-  <div class="mb-4">
-    <label>City / Location</label>
-    <input type="text" name="location" required class="w-full px-3 py-2 border rounded-md">
-  </div>
-
-  <!-- Hidden country input -->
-  <input type="hidden" name="country" value="Japan" />
-
-
-  <div class="mb-4">
-    <label>Education Level</label>
-    <select name="education" required class="w-full px-3 py-2 border rounded-md">
-      <option value="High School">High School</option>
-      <option value="Bachelor">Bachelor's</option>
-      <option value="Master">Master's</option>
-    </select>
-  </div>
-
-  <div class="mb-4">
-    <label>Expected Intake</label>
-    <input type="month" name="intake" required class="w-full px-3 py-2 border rounded-md">
-  </div>
-
-  <div class="mb-4">
-    <label>Additional Message</label>
-    <textarea name="message" rows="3" class="w-full px-3 py-2 border rounded-md"></textarea>
-  </div>
-
-  <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Send Request</button>
-</form>
-    </div>
-</div>
-
-<!-- JS -->
-<script>
-  function togglePopup() {
-    const popup = document.getElementById('consultationPopup');
-    popup.classList.toggle('hidden');
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("consultationForm");
-    const submitBtn = form.querySelector("button[type='submit']");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // Disable the button and show loading text
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Sending...";
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      fetch("/api/consultation/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to send message.");
-          }
-          return response.json();
-        })
-        .then(() => {
-          // Reset form & enable button
-          form.reset();
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Send Request";
-
-          // Show success toast
-          showSuccessToast("✅ Message sent successfully! We'll contact you soon.");
-          togglePopup(); // Close the modal
-        })
-        .catch((error) => {
-          console.error(error);
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Send Request";
-          showErrorToast("❌ Something went wrong. Please try again.");
-        });
-    });
-
-    function showSuccessToast(message) {
-      showToast(message, "bg-green-600");
-    }
-
-    function showErrorToast(message) {
-      showToast(message, "bg-red-600");
-    }
-
-    function showToast(message, bgColor) {
-      const toast = document.createElement("div");
-      toast.className = `fixed top-5 right-5 ${bgColor} text-white px-4 py-2 rounded shadow-lg z-50 transition-opacity duration-300 ease-in-out`;
-      toast.innerText = message;
-      document.body.appendChild(toast);
-
-      setTimeout(() => {
-        toast.style.opacity = "0";
-      }, 3000);
-
-      setTimeout(() => {
-        toast.remove();
-      }, 3500);
-    }
-  });
-</script>
-
+    <!-- Consultation Popup Modal -->
+    <div id="consultationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 px-4">
+        <div class="bg-white p-4 md:p-6 rounded-lg w-full max-w-md mx-2 shadow-lg relative max-h-[90vh] overflow-y-auto">
+            <button onclick="togglePopup()" class="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-700">&times;</button>
+            <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-center">Request Free Consultation</h3>
+            <form id="consultationForm" method="POST">
+                {% csrf_token %}
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Full Name</label>
+                    <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
                 </div>
-            </div>
+
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Email</label>
+                    <input type="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
+                </div>
+
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Phone Number</label>
+                    <input type="text" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
+                </div>
+
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">City / Location</label>
+                    <input type="text" name="location" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
+                </div>
+
+                <input type="hidden" name="country" value="Japan">
+
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Education Level</label>
+                    <select name="education" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
+                        <option value="High School">High School</option>
+                        <option value="Bachelor">Bachelor's</option>
+                        <option value="Master">Master's</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 md:mb-4">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Expected Intake</label>
+                    <input type="month" name="intake" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base">
+                </div>
+
+                <div class="mb-4 md:mb-5">
+                    <label class="block text-sm md:text-base mb-1 text-gray-700">Additional Message</label>
+                    <textarea name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm md:text-base"></textarea>
+                </div>
+
+                <button type="submit" 
+                        style="background-color: #D04A02;" 
+                        class="w-full text-white py-2 rounded-md hover:bg-[#B03D00] transition text-sm md:text-base">
+                    Send Request
+                </button>
+            </form>
         </div>
     </div>
-</nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12">  <!-- Adjusted padding to account for fixed nav -->
+        <!-- Your page content goes here -->
+        <div class="container mx-auto px-4">
+            <!-- Sections will be added here -->
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle popup visibility
+        function togglePopup() {
+            const popup = document.getElementById('consultationPopup');
+            popup.classList.toggle('hidden');
+        }
+
+        // Form submission handling
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("consultationForm");
+            const submitBtn = form.querySelector("button[type='submit']");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Sending...";
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch("/api/consultation/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error("Failed to send message.");
+                    return response.json();
+                })
+                .then(() => {
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send Request";
+                    showToast("Message sent successfully! We'll contact you soon.", "bg-green-600");
+                    togglePopup();
+                })
+                .catch(error => {
+                    console.error(error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send Request";
+                    showToast("Something went wrong. Please try again.", "bg-red-600");
+                });
+            });
+
+            function showToast(message, bgColor) {
+                const toast = document.createElement("div");
+                toast.className = `fixed top-5 right-5 ${bgColor} text-white px-4 py-2 rounded shadow-lg z-50`;
+                toast.innerText = message;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.opacity = "0";
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+        });
+    </script>
+
+                </div>
+        </div>
+    </nav>
+
+</body>
+</html>
