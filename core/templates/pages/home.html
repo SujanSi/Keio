@@ -4,7 +4,7 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="relative flex items-center justify-center text-white overflow-hidden" 
-         style="height: calc(100vh - 6.5rem); margin-top: 6.5rem;">
+         style="height: calc(100vh - 6.5rem); padding-top: 6.5rem;">
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         
@@ -40,11 +40,15 @@
     </div>
     
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex justify-center items-center">
-        <a href="#services" class="text-white hover:text-orange-400 transition">
-            <i class="fas fa-chevron-down text-2xl sm:text-3xl leading-none"></i>
-        </a>
-    </div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center items-center z-20">
+    <a href="#services" class="relative flex justify-center items-center w-12 h-12 sm:w-16 sm:h-16">
+        <!-- Glowing Circle Behind in Dark Blue -->
+        <span class="absolute inset-0 rounded-full bg-blue-900 opacity-40 animate-ping"></span>
+        <!-- Arrow Icon in Maple/Orange -->
+        <i class="fas fa-chevron-down text-3xl sm:text-4xl md:text-5xl text-orange-500 drop-shadow-lg"></i>
+    </a>
+</div>
 
 
 </section>

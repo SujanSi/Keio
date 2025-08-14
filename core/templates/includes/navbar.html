@@ -14,40 +14,36 @@
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
         }
+        @media (max-width: 640px) {
+            html {
+                scroll-padding-top: 120px; /* adjust for taller mobile nav */
+            }
+        }
     </style>
 </head>
-<body>
+<body class="bg-white">
+
     <!-- Navigation -->
-<nav class="bg-white shadow-md fixed w-full z-50 top-0 left-0">
-    <!-- Top info bar -->
-    <div class="bg-gray-100 border-b border-gray-200 h-10">
-        <div class="container mx-auto px-4 h-full flex justify-between items-center">
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0 left-0">
+        <!-- Top info bar -->
+        <div class="bg-gray-100 border-b border-gray-200 px-4 py-1">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
                 <!-- Social icons -->
                 <div class="flex items-center space-x-3">
                     <a href="https://www.facebook.com/share/1CQLrq3t3T/?mibextid=wwXIfr" class="text-gray-600 hover:text-blue-600 transition">
                         <i class="fab fa-facebook-f text-sm"></i>
                     </a>
-                    {% comment %} <a href="#" class="text-gray-600 hover:text-blue-600 transition">
-                        <i class="fab fa-twitter text-sm"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
-                        <i class="fab fa-instagram text-sm"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
-                        <i class="fab fa-linkedin-in text-sm"></i>
-                    </a> {% endcomment %}
                 </div>
-                
                 <!-- Location -->
                 <div class="flex items-center text-xs md:text-sm text-blue-600">
-                    <i class="fas fa-map-marker-alt mr-1 text-blue-600"></i>
-                    <span>Kumaripati, Lagankhel | Phone: +977 9705005015 | Tel: 01540-2333  |  Open Time: 06:00 AM to 06:00 PM </span>
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>Kumaripati- 19, Next to Chicken Station | Phone: +977 9705005015 | Tel: 01540-2333 | Open Time: 06:00 AM to 06:00 PM</span>
                 </div>
             </div>
         </div>
-        
+
         <!-- Main navigation -->
-        <div class="container mx-auto px-4 h-14 md:h-16 flex items-center justify-between bg-white">
+        <div id="mainNav" class="container mx-auto px-4 py-1 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
             <!-- Logo/Brand -->
             <div class="flex items-center">
                 <a href="{% url 'home' %}" class="flex items-center">
@@ -60,21 +56,24 @@
                 </a>
             </div>
 
-            <!-- Navigation Links -->
-            <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
-                <a href="#services" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 transition">Services</a>
-                <a href="#universities" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 hidden sm:inline transition">Universities</a>
-                {% comment %} <a href="#testimonials" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 hidden md:inline transition">Success Stories</a> {% endcomment %}
-                <a href="#contact" class="text-sm md:text-base whitespace-nowrap text-blue-700 hover:text-gray-900 transition">Contact</a>
-                
-                <!-- Consultation Button -->
-                <div class="flex items-center ml-2 md:ml-4 border-l border-gray-200 pl-2 md:pl-4">
+            <!-- Navigation Links & Button -->
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a href="#services" class="text-sm md:text-base text-blue-700 hover:text-gray-900 transition whitespace-nowrap">Services</a>
+                <a href="#universities" class="text-sm md:text-base text-blue-700 hover:text-gray-900 transition whitespace-nowrap hidden sm:inline">Universities</a>
+                <a href="#contact" class="text-sm md:text-base text-blue-700 hover:text-gray-900 transition whitespace-nowrap">Contact</a>
+
+                <div class="flex items-center border-l border-gray-200 pl-2 sm:pl-4">
                     <a onclick="togglePopup()" 
                        style="background-color: #D04A02;" 
                        class="text-white px-3 py-1 md:px-4 md:py-2 rounded-md text-sm font-medium hover:bg-[#B03D00] transition cursor-pointer whitespace-nowrap">
                         Free Consultation
                     </a>
                 </div>
+            </div>
+        </div>
+    </nav>
+
+
 
 
     <!-- Consultation Popup Modal -->
@@ -135,12 +134,11 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-24 pb-12">  <!-- Adjusted padding to account for fixed nav -->
-        <!-- Your page content goes here -->
-        <div class="container mx-auto px-4">
-            <!-- Sections will be added here -->
-        </div>
-    </main>
+<main id="pageContent" class="pb-12">
+    <div class="container mx-auto px-4">
+        <!-- Sections will be added here -->
+    </div>
+</main>
 
     <!-- JavaScript -->
     <script>
@@ -201,9 +199,7 @@
         });
     </script>
 
-                </div>
-        </div>
-    </nav>
+
 
 </body>
 </html>
