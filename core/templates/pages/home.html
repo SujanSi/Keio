@@ -8,7 +8,7 @@
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         
-        <img src="{% static 'images/banner.jpg' %}" alt="Japan Education" class="w-full h-full object-cover object-center">
+        <img src="{% static 'images/bannerss.png' %}" alt="Japan Education" class="w-full h-full object-cover object-center">
     </div>
     
     <!-- Content -->
@@ -66,13 +66,187 @@
 
     <!-- Paragraph Section -->
     <div class="bg-white rounded-xl shadow-md p-6 sm:p-10 mb-14">
-      <!-- Introduction -->
-      <div class="mb-8">
-        <h3 class="text-2xl font-bold text-[#D04A02] mb-2">Introduction</h3>
-        <p class="text-gray-700 leading-relaxed">
-          <strong>KEIO Educational Consultancy</strong> proudly introduces <strong>Japanese Language Courses</strong> a comprehensive program designed to provide individuals with the necessary skills and knowledge to excel in the Japanese language, culture and professional environment. With a focus on Language Classes, Exam Preparation Interview Preparation, Documentation Services, Translation Services, Pre-departure Guidance, and Career Pathway Planning, our courses aim to empower students to pursue opportunities in Japan with confidence and competence.
-        </p>
-      </div>
+<!-- Introduction with Autumn Maple Leaf Rain -->
+<div class="mb-8 relative overflow-hidden rounded-xl p-6 bg-white shadow-lg min-h-[200px]">
+  <!-- Maple Leaf Container -->
+  <div class="maple-leaf-container absolute inset-0 pointer-events-none overflow-hidden"></div>
+  
+  <!-- Content -->
+  <div class="relative z-10">
+    <h3 class="text-2xl font-bold text-[#D04A02] mb-2 flex items-center">
+      <span class="mr-2">Introduction</span>
+      <svg class="w-6 h-6 text-[#D04A02]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+      </svg>
+    </h3>
+    <p class="text-gray-700 leading-relaxed">
+        <strong class="text-[#D04A02]">KEIO Educational Consultancy</strong> is a premier Japanese language consultancy dedicated to empowering learners and professionals with tailored language proficiency and cultural competence. We specialize in structured language training, personalized consultancy, and comprehensive support services for individuals pursuing studies, careers, or life experiences in Japan.</p>
+  </div>
+</div>
+
+<style>
+.maple-leaf-container {
+  height: 100%;
+  width: 100%;
+}
+
+.maple-leaf {
+  position: absolute;
+  pointer-events: none;
+  animation: leaf-fall linear infinite;
+  z-index: 1;
+  top: -50px;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.maple-leaf svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Different autumn colors for leaves */
+.maple-leaf.color1 .leaf-body { fill: #D04A02; }
+.maple-leaf.color2 .leaf-body { fill: #E67E22; }
+.maple-leaf.color3 .leaf-body { fill: #E74C3C; }
+.maple-leaf.color4 .leaf-body { fill: #F39C12; }
+
+.maple-leaf .leaf-veins {
+  stroke: #922B21;
+  stroke-width: 1;
+  fill: none;
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg);
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+/* Add subtle swaying motion */
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+}
+
+.leaf-sway {
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+/* Add subtle Japanese pattern to background */
+.bg-japanese-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D04A02' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Create maple leaves with SVG
+  const container = document.querySelector('.maple-leaf-container');
+  
+  function createLeaf() {
+    const leaf = document.createElement('div');
+    leaf.classList.add('maple-leaf');
+    
+    // Random color class
+    const colorClass = 'color' + (Math.floor(Math.random() * 4) + 1);
+    leaf.classList.add(colorClass);
+    
+    // Add sway animation to some leaves
+    if (Math.random() > 0.5) {
+      leaf.classList.add('leaf-sway');
+      leaf.style.animationDuration = `${3 + Math.random() * 4}s`;
+    }
+    
+    // Create SVG maple leaf
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    
+    // Create maple leaf shape
+    const leafBody = document.createElementNS(svgNS, "path");
+    leafBody.setAttribute("class", "leaf-body");
+    leafBody.setAttribute("d", "M50,10 C60,15 75,10 80,20 C85,30 85,40 80,50 C75,60 70,70 60,75 C50,80 40,75 30,70 C20,65 15,55 10,45 C5,35 10,25 20,20 C30,15 40,5 50,10 Z");
+    svg.appendChild(leafBody);
+    
+    // Add leaf veins
+    const veins = [
+      "M50,10 L50,75",
+      "M40,15 L60,30",
+      "M35,25 L65,40",
+      "M30,35 L70,50",
+      "M25,45 L75,60",
+      "M20,55 L80,68"
+    ];
+    
+    veins.forEach(veinPath => {
+      const vein = document.createElementNS(svgNS, "path");
+      vein.setAttribute("class", "leaf-veins");
+      vein.setAttribute("d", veinPath);
+      svg.appendChild(vein);
+    });
+    
+    // Add stem
+    const stem = document.createElementNS(svgNS, "path");
+    stem.setAttribute("class", "leaf-veins");
+    stem.setAttribute("d", "M50,75 L50,85");
+    svg.appendChild(stem);
+    
+    leaf.appendChild(svg);
+    
+    // Random properties for each leaf
+    const left = Math.random() * 100;
+    const size = 20 + Math.random() * 30;
+    const duration = 8 + Math.random() * 12;
+    const delay = Math.random() * 5;
+    
+    leaf.style.left = `${left}%`;
+    leaf.style.width = `${size}px`;
+    leaf.style.height = `${size}px`;
+    leaf.style.animationDuration = `${duration}s`;
+    leaf.style.animationDelay = `${delay}s`;
+    
+    // Random opacity
+    const opacity = 0.6 + Math.random() * 0.4;
+    leaf.style.opacity = opacity;
+    
+    container.appendChild(leaf);
+    
+    // Remove leaf after animation completes
+    setTimeout(() => {
+      if (leaf.parentNode) {
+        leaf.parentNode.removeChild(leaf);
+      }
+    }, (duration + delay) * 1000);
+  }
+  
+  // Create initial leaves
+  for (let i = 0; i < 20; i++) {
+    createLeaf();
+  }
+  
+  // Continuously create new leaves
+  setInterval(createLeaf, 400);
+});
+</script>
 
       <!-- Objectives -->
       <div class="mb-8">
@@ -260,7 +434,7 @@
 <section id="preparation-courses" class="py-12 sm:py-16 md:py-20 bg-[#fff9f5] overflow-x-auto">
   <div class="container mx-auto px-4 sm:px-6">
     <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-12 text-[#D04A02]" data-aos="fade-up">
-      Japanese Preparation Courses
+      SSW Skill Preparation Courses
     </h2>
 
     <div class="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-[#D04A02] scrollbar-track-orange-100 px-6 pb-6" data-aos="fade-up" data-aos-delay="100">
@@ -313,7 +487,7 @@
       <!-- Agriculture -->
       <div class="flex-none w-72 p-6 bg-white border-2 border-[#D04A02] rounded-2xl shadow-md hover:shadow-lg transition hover:bg-[#fff5f0]">
         <div class="flex items-center justify-center w-28 h-28 rounded-full bg-white border-1 border-[#D04A02] shadow ring-2 ring-[#D04A02] mb-4 mx-auto overflow-hidden">
-          <img src="{% static 'images/agriculture.jpeg' %}" alt="Agriculture" class="w-full h-full object-cover">
+          <img src="{% static 'images/agricultures.jpeg' %}" alt="Agriculture" class="w-full h-full object-cover">
         </div>
         <h3 class="text-xl font-semibold text-[#D04A02] text-center mb-3">Agriculture</h3>
         <p class="text-gray-600 text-sm text-center">Practical training in crop cultivation, farming technology, and food production based on Japanese methods.</p>
@@ -418,7 +592,7 @@
 <!-- Japan University Partners -->
 <!-- Japan University Partners -->
 <section id="study-in-japan" class="py-12 sm:py-16 md:py-20 bg-white">
-  <div class="container mx-auto px-6 sm:px-12 lg:px-20 max-w-7xl">
+  <div class="mx-auto px-9 max-w-full">
     <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-[#D04A02]" data-aos="fade-up">
       Study in Japan
     </h2>
@@ -426,7 +600,8 @@
       Experience world-class education alongside vibrant culture by studying in Japan's top cities.
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" data-aos="fade-up" data-aos-delay="200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10" data-aos="fade-up" data-aos-delay="200">
+
 
       <!-- Tokyo -->
       <div class="p-8 bg-white border-2 border-[#D04A02] rounded-xl shadow-md hover:shadow-lg transition hover:bg-[#fff5f0] text-center">
@@ -460,6 +635,20 @@
           Osaka offers renowned technical and business universities, energetic nightlife, and a warm, welcoming atmosphere for international students.
         </p>
       </div>
+
+
+            <!-- Nogaya -->
+      <div class="p-8 bg-white border-2 border-[#D04A02] rounded-xl shadow-md hover:shadow-lg transition hover:bg-[#fff5f0] text-center">
+        <div class="mb-6 flex justify-center text-[#D04A02]">
+<img src="{% static 'images/nagoya.jpeg' %}" alt="Osaka" class="w-24 h-24 object-cover rounded-full border-4 border-[#D04A02] shadow-md">
+        </div>
+        <h3 class="text-2xl font-semibold text-[#D04A02] mb-4">Nagoya</h3>
+        <p class="text-gray-700 leading-relaxed">
+    Nagoya is Japan’s industrial and technology hub, home to leading universities in engineering, science, and business. The city offers affordable living, rich history, and excellent career opportunities for international students.
+  </p>
+      </div>
+
+
 
       <!-- Fukuoka -->
       <div class="p-8 bg-white border-2 border-[#D04A02] rounded-xl shadow-md hover:shadow-lg transition hover:bg-[#fff5f0] text-center">
